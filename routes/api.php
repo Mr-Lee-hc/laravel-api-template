@@ -22,14 +22,13 @@ Route::group([
     'namespace' => 'App\Http\Controllers'
 ], function ($r) {
 
-    // 后台
     $r->post('login', 'AuthorizationController@login');
     $r->group(['middleware' => 'auth:api'],function($r){
         // 退出
         $r->delete('logout', 'AuthorizationController@logout');
     });
 
-    // 供应商web
+    // web
     $r->group([
         'namespace' => 'Web',
         'prefix' => 'web',
